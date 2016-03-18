@@ -1,16 +1,26 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Musica
- *
- * @author PHP-MySQL
- */
 class Musica {
-    //put your code here
+    public $id;
+    public $nome;
+    public $autor_id;
+    
+    public function listarTodasAsMusicas() {
+        
+        //$lista = array($musical);
+        
+        $lista = array();
+        
+        for ($index = 0; $index <= 10; $index++) {
+            $musical = new Musica();
+            $musical->id=$index;
+            $musical->nome= "Flor de Lins  " . $index;
+            $musical->autor_id= 10+ $index;
+        
+            array_push($lista, $musical );            
+        }
+        
+        return $lista;
+    }
+    
 }
