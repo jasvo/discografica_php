@@ -1,11 +1,12 @@
 <?php
 
+include '../conexao/Conexao.php';
 class Musica {
     public $id;
     public $nome;
     public $autor_id;
     
-    public function listarTodasAsMusicas() {
+    /*public function listarTodasAsMusicas() {
         
         //$lista = array($musical);
         
@@ -21,6 +22,15 @@ class Musica {
         }
         
         return $lista;
+                 
+    }*/
+    public function listarTodasAsMusicas() {
+       $sql = "SELECT * FROM musicas";
+              
+       $query = Conexao::prepare($sql);
+       $query->execute();
+       
+       return $query->fetchAll();
     }
     
 }

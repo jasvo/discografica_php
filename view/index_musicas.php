@@ -8,13 +8,13 @@
     <table class="table table-striped">
         <tr>
             <td>id</td>
-            <td>nome</td>
+            <td>Título</td>
             <td>autor_id</td>
         </tr>
     <?php foreach ($musicas->listar() as $value){?>
         <tr>
             <td><?php echo $value->id?></td>
-            <td><?php echo $value->nome?></td>
+            <td><?php echo $value->titulo?></td>
             <td><?php echo $value->autor_id?></td>
         </tr>        
     <?php } ?>
