@@ -2,10 +2,56 @@
 
 include '../conexao/Conexao.php';
 class Musica {
-    public $id;
-    public $nome;
-    public $autor_id;
+    private $id;
+    private $titulo;
+    private $autor_id;
+    private $midia;
     
+    function getId() {
+        return $this->id;
+    }
+
+    function getTitulo() {
+        return $this->titulo;
+    }
+
+    function getAutor_id() {
+        return $this->autor_id;
+    }
+
+    function getMidia() {
+        return $this->midia;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    function setAutor_id($autor_id) {
+        $this->autor_id = $autor_id;
+    }
+
+    function setMidia($midia) {
+        $this->midia = $midia;
+    }
+
+    public function salvar(){
+
+        $sql = "insert into musicas "
+                ."(titulo,autor_id,midia)"
+                ." values "
+                ."(:titulo,:autor_id,:midia)";
+        $query = Conexao::prepare($sql);
+        $query->bindValue(":titulo",$this->getTitulo());
+        $query->bindValue(":autor_id",$this->getAutor_id());
+        $query->bindValue(":midia",$this->getMidia());
+        $query->execute();
+        
+    }
     /*public function listarTodasAsMusicas() {
         
         //$lista = array($musical);
