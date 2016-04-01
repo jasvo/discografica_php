@@ -4,18 +4,22 @@
 ?>
 
 <div class="col-sm-10 col-sm-offset-1">
-    <h3>Musicas</h3>
+    <h3>Listar Músicas</h3>
+    <a class="btn btn-success pull-right btn-xs" href="cadastro_musica.php">Adicionar</a>
     <table class="table table-striped">
         <tr>
-            <td>id</td>
+            <td>Id</td>
             <td>Título</td>
-            <td>autor_id</td>
+            <td>Autor</td>
+            <td>Ações</td>
         </tr>
     <?php foreach ($musicas->listar() as $value){?>
         <tr>
             <td><?php echo $value->id?></td>
             <td><?php echo $value->titulo?></td>
-            <td><?php echo $value->autor_id?></td>
+            <td><?php echo $value->nome?></td>
+            <td><a class="btn btn-primary btn-xs" href="editar_musica.php">Editar</a> | 
+                <a class="btn btn-danger btn-xs" href="">Deletar</a></td>
         </tr>        
     <?php } ?>
         

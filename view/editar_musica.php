@@ -5,7 +5,6 @@
 
 if(isset($_POST['salvar'])){
     $musicaControl->inserir();
-    header('Location: index_musicas.php');
 }
 else
 {
@@ -16,7 +15,7 @@ else
     <!-- <div style="margin-top: 100px;" class="col-sm-4">
         <h3>Cadastre uma música</h3>        
     </div> -->
-    <h3>Cadastre uma música</h3>        
+    <h3>Edita música</h3>        
     <div class="col-sm-4">
         <form method="POST">
             <label>Título da Música</label>

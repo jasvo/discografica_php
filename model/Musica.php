@@ -52,30 +52,15 @@ class Musica {
         $query->execute();
         
     }
-    /*public function listarTodasAsMusicas() {
-        
-        //$lista = array($musical);
-        
-        $lista = array();
-        
-        for ($index = 0; $index <= 10; $index++) {
-            $musical = new Musica();
-            $musical->id=$index;
-            $musical->nome= "Flor de Lins  " . $index;
-            $musical->autor_id= 10+ $index;
-        
-            array_push($lista, $musical );            
-        }
-        
-        return $lista;
-                 
-    }*/
+    
     public function listarTodasAsMusicas() {
-       $sql = "SELECT * FROM musicas";
-              
+       $sql = "SELECT t1.*,t2.nome "
+             ."FROM musicas t1 "
+             ."inner join autores t2 "
+             ."On (t2.id = t1.autor_id) "
+             ."order by t1.id Desc ";              
        $query = Conexao::prepare($sql);
-       $query->execute();
-       
+       $query->execute();       
        return $query->fetchAll();
     }
     
