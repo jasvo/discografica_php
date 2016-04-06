@@ -64,4 +64,29 @@ class Musica {
        return $query->fetchAll();
     }
     
+    public function find($id = null){
+       $sql = "SELECT t1.*,t2.nome "
+             ."FROM musicas t1 "
+             ."inner join autores t2 "
+             ."On (t2.id = t1.autor_id) "
+             ."where t1.id = :id";              
+       $query = Conexao::prepare($sql);
+       $query->bindValue(":id",$id);
+       $query->execute();       
+       return $query->fetch();
+    }
+    
+    public function update($id = null){
+       $sql = "Update musicas "
+             ."set titulo = :titulo, "
+             ."    autor_id = :autor_id,"
+             ."    midia = :midia "
+             ."where id = :id";
+       $query = Conexao::prepare($sql);
+       $query->bindValue(":id",$id);
+       $query->bindValue(":titulo",   $this->getTitulo());
+       $query->bindValue(":autor_id", $this->getAutor_id());
+       $query->bindValue(":midia",    $this->getMidia());
+       $query->execute();       
+    }
 }

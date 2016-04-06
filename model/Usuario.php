@@ -13,4 +13,13 @@ class Usuario {
        
        return $query->fetchAll();
     }
+    
+    function find($id = null){
+       $sql = "SELECT t1.* FROM usuarios t1 "
+               ."where t1.id " .$id;
+       $query = Conexao::prepare($sql);
+       $query->execute();
+       
+       return $query->fetchAll();
+    }
 }

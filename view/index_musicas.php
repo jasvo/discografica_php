@@ -18,8 +18,9 @@
             <td><?php echo $value->id?></td>
             <td><?php echo $value->titulo?></td>
             <td><?php echo $value->nome?></td>
-            <td><a class="btn btn-primary btn-xs" href="editar_musica.php">Editar</a> | 
-                <a class="btn btn-danger btn-xs" href="">Deletar</a></td>
+            <td><?php echo "<a class='btn btn-primary btn-xs' href='editar_musica.php?acao=atualizar&id=".$value->id."'>Editar</a>" ?> | 
+                <a class="btn btn-danger btn-xs" hrefx="">Deletar</a></td>
+            <!--<a class="btn btn-primary btn-xs" href="editar_musica.php?id=">Editar</a> -->
         </tr>        
     <?php } ?>
         

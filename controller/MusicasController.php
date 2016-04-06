@@ -20,6 +20,27 @@ class MusicasController {
         
         $musica->salvar();        
     }
-            
+      
+    public function find($id = null){
+        $musicas = new Musica();
+        return $musicas->find($id);
+    }
+     
+    public function update(){
+        $musicas = new Musica();
+        
+        $id = $_POST['id'];
+        $titulo = $_POST['titulo'];
+        $autor_id = $_POST['autor_id'];        
+        $midia = $_POST['midia'];
+                
+        $musicas->setId($id);
+        $musicas->setTitulo($titulo);
+        $musicas->setAutor_id($autor_id);
+        $musicas->setMidia($midia);
+        
+        $musicas->update($id);
+        
+    }
     
 }

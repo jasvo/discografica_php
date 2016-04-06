@@ -3,8 +3,26 @@
    include '../controller/MusicasController.php';
    $musicaControl = new MusicasController();
 
+    $id = $_GET['id'];
+    $acao = $_GET['acao'];
+    
+    $musicas = $musicaControl->find($id);
+    
+   if($acao == 'atualizar'){
+       
+       
+   }
+   
+    
 if(isset($_POST['salvar'])){
-    $musicaControl->inserir();
+    if($acao == 'atualizar'){
+       $musicaControl->update();       
+    }
+    else
+    {
+        $musicaControl->inserir();
+    }
+    header('locate: index_musica.php');
 }
 else
 {
@@ -19,17 +37,21 @@ else
     <div class="col-sm-4">
         <form method="POST">
             <label>Título da Música</label>
-            <input name="titulo" class="form-control" required="true">
+            <input name="id" value="<?php echo $musicas->id ?>" type="hidden">
+            <input name="acao" value="<?php echo $acao ?>" type="hidden">
+            <input name="titulo" class="form-control" required="true" value="<?php echo $musicas->titulo ?>">
 
             <label>Compositor</label>
             <select name="autor_id" class="form-control">
+                <option value="<?php echo $musicas->autor_id ?>" selected><?php echo $musicas->nome ?></option>
                 <option value="1">Cartola</option>
                 <option value="2">Tim Maia</option>
                 <option value="3">Djavan</option>
             </select>
 
             <label>Mídia</label>
-            <select name="midia" class="form-control">
+            <select name="midia" class="form-control" selectedValue="<?php echo $musicas->midia ?>">
+                <option value="<?php echo $musicas->midia ?>" selected><?php echo $musicas->midia ?></option>
                 <option value="1">CD</option>
                 <option value="2">DVD</option>
                 <option value="3">Vinil</option>        
