@@ -6,23 +6,33 @@
     $id = $_GET['id'];
     $acao = $_GET['acao'];
     
-    $musicas = $musicaControl->find($id);
+    $titulo = "";
+    if($acao == 'atualizar'){
+       $titulo = "Editar";
+    }else
+    if($acao == 'excluir'){
+       $titulo = "Excluir";
+    }
+    else
+    {
+       $titulo = "Novo";
+    }
     
-   if($acao == 'atualizar'){
-       
-       
-   }
-   
+    $musicas = $musicaControl->find($id);
+     
     
 if(isset($_POST['salvar'])){
     if($acao == 'atualizar'){
-       $musicaControl->update();       
+       $musicaControl->update();
+    }else
+    if($acao == 'excluir'){
+       $musicaControl->deletar($id);
     }
     else
     {
         $musicaControl->inserir();
     }
-    header('locate: index_musica.php');
+    header('Location: index_musicas.php');
 }
 else
 {
@@ -37,6 +47,7 @@ else
     <div class="col-sm-4">
         <form method="POST">
             <label>Título da Música</label>
+            <label><?php echo " - ".$titulo ?></label>
             <input name="id" value="<?php echo $musicas->id ?>" type="hidden">
             <input name="acao" value="<?php echo $acao ?>" type="hidden">
             <input name="titulo" class="form-control" required="true" value="<?php echo $musicas->titulo ?>">

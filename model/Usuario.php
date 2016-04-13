@@ -22,4 +22,14 @@ class Usuario {
        
        return $query->fetchAll();
     }
+    
+    function autenticar($email = null , $senha = null){
+       $sql = "SELECT t1.* FROM usuarios t1 "
+               ."where t1.email = :email";
+       $query = Conexao::prepare($sql);
+       $query->bindValue(":email",$email);
+       $query->execute();       
+       return $query->fetch();       
+    }
+            
 }

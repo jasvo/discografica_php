@@ -89,4 +89,11 @@ class Musica {
        $query->bindValue(":midia",    $this->getMidia());
        $query->execute();       
     }
+    
+    public function delete($id = null){
+       $sql = "Delete from musicas where id = :id";
+       $query = Conexao::prepare($sql);
+       $query->bindValue(":id",$id);       
+       $query->execute();
+    }
 }

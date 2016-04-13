@@ -39,8 +39,11 @@ class MusicasController {
         $musicas->setAutor_id($autor_id);
         $musicas->setMidia($midia);
         
-        $musicas->update($id);
-        
+        $musicas->update($id);        
     }
     
+    public function deletar($id = null){
+        $musicas = new Musica();
+        return $musicas->delete($id);
+    }
 }

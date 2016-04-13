@@ -1,5 +1,14 @@
 <?php include '/../style/template.php';?>
 <?php include '../controller/MusicasController.php'; 
+    
+    session_start();
+ 
+    if (isset($_SESSION['id'])){
+        echo 'entrou';
+        die();
+        header('Location: login.php');
+    }
+
    $musicas = new MusicasController();
 ?>
 
@@ -19,7 +28,7 @@
             <td><?php echo $value->titulo?></td>
             <td><?php echo $value->nome?></td>
             <td><?php echo "<a class='btn btn-primary btn-xs' href='editar_musica.php?acao=atualizar&id=".$value->id."'>Editar</a>" ?> | 
-                <a class="btn btn-danger btn-xs" hrefx="">Deletar</a></td>
+                <?php echo "<a class='btn btn-danger btn-xs' href='editar_musica.php?acao=excluir&id=".$value->id."'>Excluir</a>" ?></td>
             <!--<a class="btn btn-primary btn-xs" href="editar_musica.php?id=">Editar</a> -->
         </tr>        
     <?php } ?>
