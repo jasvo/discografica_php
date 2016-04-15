@@ -1,5 +1,5 @@
 <?php
-include '../conexao/Conexao.php';
+include_once '../conexao/Conexao.php';
 class Usuario {
     public $id;	 	 
     public $email;

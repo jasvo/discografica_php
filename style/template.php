@@ -1,3 +1,8 @@
+<?php     
+    include_once '../controller/UsuariosController.php';
+    $userCtrl = new UsuariosController();
+    $userCtrl->verifica();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,11 +20,15 @@
   <body>  
       
       <?php 
-       $session = 1; 
-       if($session == null){
-       }else{
-         include 'menu.php';  
-       }
+       
+         if (isset($_SESSION['email'])){
+             
+             include 'menu.php';                            
+         }
+         else
+         {
+             
+         }
       ?>
       
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -1,20 +1,29 @@
-<?php include '/../style/template.php';
-      include '../controller/UsuariosController.php';
-      $usuarios = new UsuariosController();
+<?php
+      include_once '../controller/UsuariosController.php';
+      $usuariosCtrl = new UsuariosController();
       
-if(isset($_POST['login'])){
-    
-    $email = $_POST['inputEmail'];
-    $senha = $_POST['inputPassword'];
-        
-    if ($usuarios->autenticar($email, $senha)){
-        header('Location: index_musicas.php');
-    }
-}
-
+      if(isset($_POST['login'])){
+        $email = $_POST['inputEmail'];
+        $senha = $_POST['inputPassword'];
+        $usuariosCtrl->autenticar($email, $senha);
+        //echo $_SESSION['email']." Logado..";
+        //die();
+      }
 ?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Bootstrap 101 Template</title>
 
-<body>
+   
+    <link href="style/css/bootstrap.css" rel="stylesheet">
+
+  
+  </head>
+  <body> 
 
     <div class="container col-sm-3 col-sm-offset-4">
 
@@ -37,5 +46,10 @@ if(isset($_POST['login'])){
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="style/js/bootstrap.min.js"></script>
   </body>
+</html>
 

@@ -1,14 +1,9 @@
-<?php include '/../style/template.php';?>
-<?php include '../controller/MusicasController.php'; 
-    
-    session_start();
- 
-    if (isset($_SESSION['id'])){
-        echo 'entrou';
-        die();
-        header('Location: login.php');
-    }
+<?php
+session_start();
+include '../style/template.php'; 
+include_once '../controller/MusicasController.php'; 
 
+echo $_SESSION['email'];
    $musicas = new MusicasController();
 ?>
 
@@ -44,4 +39,5 @@
     ?>
     
     </table>
+   
 </div>

@@ -1,6 +1,6 @@
 <?php 
    include '../style/template.php';
-   include '../controller/MusicasController.php';
+   include_once '../controller/MusicasController.php';
    $musicaControl = new MusicasController();
 
     $id = $_GET['id'];

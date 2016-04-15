@@ -1,5 +1,5 @@
 <?php
-include '../model/Musica.php';
+include_once '../model/Musica.php';
 
 class MusicasController {
     public function listar() {
